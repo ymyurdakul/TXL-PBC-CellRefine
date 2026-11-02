@@ -5,9 +5,7 @@ figures/output/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-# weights: the refiner weights are release assets (see README); detector weights are not distributed
-TXLPBC_runs/cellrefine/runs/*/best.pt
-*.part
+# detector weights and training artifacts that are not distributed
 TXLPBC_runs/train/*/weights/
 TXLPBC_runs/seeds/train/*/weights/
 TXLPBC_runs/train_cell/*/weights/

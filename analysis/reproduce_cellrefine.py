@@ -1,8 +1,7 @@
 """Reproduces the CellRefine test results of YOLO26-m (three runs) on CPU or GPU from the cached detector predictions
 and the released refiner weights, without the detector weights.
 
-Run from the repository root after placing the TXL-PBC dataset in TXL-PBC_Dataset-master/TXL-PBC and downloading
-the weights (python download_weights.py):
+Run from the repository root after placing the TXL-PBC dataset in TXL-PBC_Dataset-master/TXL-PBC:
     python analysis/reproduce_cellrefine.py            # test split
     python analysis/reproduce_cellrefine.py --split val
 Metrics use analysis/evalcore.py, a re-implementation of the Ultralytics 8.4.191 detection metrics.
@@ -31,7 +30,7 @@ store = pickle.load(open(out_path, 'rb')) if out_path.exists() else {}
 rows = []
 for s in [int(x) for x in a.seeds.split(',')]:
     wf = ROOT / f'TXLPBC_runs/cellrefine/runs/r18_s{s}/best.pt'
-    if not wf.exists(): sys.exit(f'{wf} not found; download the weights first: python download_weights.py')
+    if not wf.exists(): sys.exit(f'{wf} not found; download it from the link in README.md (Weights)')
     ck = torch.load(wf, map_location='cpu', weights_only=False)
     ar = ck['args']
     m = CellRefiner(size=ar['size'], ctx=ar['ctx'], bins=ar['bins'], rng=ar['rng'], backbone=ar['backbone'], pretrained=False)
