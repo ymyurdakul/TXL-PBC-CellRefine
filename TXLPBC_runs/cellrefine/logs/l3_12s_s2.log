@@ -1,0 +1,109 @@
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv12s summary (fused): 159 layers, 9,232,041 parameters, 0 gradients, 23.2 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2218.0±1413.9 MB/s, size: 36.9 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/train.cache... 882 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 882/882 336.3Mit/s 0.0s
+[34m[1mtrain: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/train/92129d1652e75c3892beb376df57d274.png: 1 duplicate labels removed
+[34m[1mtrain: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/train/a8581e04ac765bd3ad658cf8e530a6ea.png: 1 duplicate labels removed
+[34m[1mtrain: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/train/c255521a08b75da09373db44e7f099c5.png: 17 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 1% ──────────── 1/56 1.7s/it 0.5s<1:32[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 5% ╸─────────── 3/56 4.8it/s 0.6s<11.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 5/56 8.0it/s 0.8s<6.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 7/56 9.6it/s 0.9s<5.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 16% ━╸────────── 9/56 10.2it/s 1.1s<4.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 11/56 10.8it/s 1.3s<4.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 13/56 11.4it/s 1.4s<3.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 26% ━━━───────── 15/56 11.6it/s 1.6s<3.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 30% ━━━╸──────── 17/56 11.8it/s 1.7s<3.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 33% ━━━━──────── 19/56 11.9it/s 1.9s<3.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 21/56 12.0it/s 2.1s<2.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 41% ━━━━╸─────── 23/56 12.1it/s 2.2s<2.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 25/56 12.1it/s 2.4s<2.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 27/56 12.2it/s 2.6s<2.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 29/56 11.9it/s 2.7s<2.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 31/56 11.9it/s 2.9s<2.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 58% ━━━━━━━───── 33/56 11.9it/s 3.1s<1.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 35/56 12.0it/s 3.2s<1.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 66% ━━━━━━━╸──── 37/56 12.0it/s 3.4s<1.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 69% ━━━━━━━━──── 39/56 12.0it/s 3.6s<1.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 73% ━━━━━━━━╸─── 41/56 12.1it/s 3.7s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 43/56 12.0it/s 3.9s<1.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 45/56 12.1it/s 4.1s<0.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 83% ━━━━━━━━━━── 47/56 12.1it/s 4.2s<0.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 49/56 12.1it/s 4.4s<0.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 51/56 12.1it/s 4.6s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 94% ━━━━━━━━━━━─ 53/56 12.2it/s 4.7s<0.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 98% ━━━━━━━━━━━╸ 55/56 12.1it/s 4.9s<0.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 56/56 11.3it/s 4.9s
+                   all        882      12491      0.988      0.984      0.994      0.911
+Speed: 0.3ms preprocess, 3.4ms inference, 0.0ms loss, 0.3ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_s2_train/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.13s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.908
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.992
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.982
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.855
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.903
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.924
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.522
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.848
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.927
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.876
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.922
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.945
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.988
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_s2_train[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv12s summary (fused): 159 layers, 9,232,041 parameters, 0 gradients, 23.2 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2578.0±1462.3 MB/s, size: 60.8 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 88.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 1.6s/it 0.5s<23.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 4.1it/s 0.6s<3.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 6.6it/s 0.8s<1.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 8.2it/s 1.0s<1.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 9.4it/s 1.1s<0.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 10.1it/s 1.3s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 10.7it/s 1.5s<0.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 11.1it/s 1.6s<0.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 9.4it/s 1.7s
+                   all        252       3737      0.978      0.958      0.989      0.867
+Speed: 0.3ms preprocess, 3.4ms inference, 0.0ms loss, 0.3ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_s2_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.863
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.984
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.963
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.782
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.870
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.892
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.487
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.805
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.887
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.809
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.891
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.914
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.995
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.976
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_s2_val[0m
+veri hazir 10s | train 882 val 252 | dedektor val mAP50-95=0.8669
+model parametre: 4.17M | adim 4440
+ep 1/40 loss 2.7101 dfl 1.9537 l1 0.04858 iou 0.5135 | 23s
+ep 2/40 loss 1.7045 dfl 1.1162 l1 0.02600 iou 0.4583 | 35s
+ep 3/40 loss 1.4802 dfl 0.9415 l1 0.01704 iou 0.4536 | 47s
+ep 4/40 loss 1.4270 dfl 0.8997 l1 0.01539 iou 0.4503 | 59s | val i0_b0.5=0.8622 i1_b0.0=0.8476 i1_b0.5=0.8431 *
+ep 5/40 loss 1.4021 dfl 0.8794 l1 0.01454 iou 0.4500 | 74s
+ep 6/40 loss 1.3759 dfl 0.8580 l1 0.01387 iou 0.4486 | 86s
+ep 7/40 loss 1.3685 dfl 0.8527 l1 0.01359 iou 0.4477 | 98s
+ep 8/40 loss 1.3614 dfl 0.8480 l1 0.01340 iou 0.4464 | 110s | val i0_b0.5=0.8611 i1_b0.0=0.8540 i1_b0.5=0.8484
+ep 9/40 loss 1.3564 dfl 0.8435 l1 0.01324 iou 0.4467 | 125s
+ep 10/40 loss 1.3385 dfl 0.8305 l1 0.01271 iou 0.4445 | 137s
+ep 11/40 loss 1.3368 dfl 0.8277 l1 0.01266 iou 0.4458 | 149s
+ep 12/40 loss 1.3297 dfl 0.8236 l1 0.01250 iou 0.4435 | 161s | val i0_b0.5=0.8574 i1_b0.0=0.8356 i1_b0.5=0.8262
+ep 13/40 loss 1.3240 dfl 0.8192 l1 0.01234 iou 0.4431 | 175s
+ep 14/40 loss 1.3220 dfl 0.8189 l1 0.01225 iou 0.4418 | 187s
+ep 15/40 loss 1.3163 dfl 0.8135 l1 0.01212 iou 0.4421 | 199s
+ep 16/40 loss 1.3102 dfl 0.8090 l1 0.01196 iou 0.4414 | 211s | val i0_b0.5=0.8602 i1_b0.0=0.8633 i1_b0.5=0.8561 *
+ep 17/40 loss 1.3075 dfl 0.8068 l1 0.01188 iou 0.4414 | 226s
+ep 18/40 loss 1.3050 dfl 0.8051 l1 0.01178 iou 0.4410 | 238s
+ep 19/40 loss 1.2990 dfl 0.8005 l1 0.01159 iou 0.4405 | 250s
+ep 20/40 loss 1.2926 dfl 0.7965 l1 0.01145 iou 0.4388 | 262s | val i0_b0.5=0.8617 i1_b0.0=0.8689 i1_b0.5=0.8641 *
+ep 21/40 loss 1.2893 dfl 0.7940 l1 0.01132 iou 0.4387 | 276s
+ep 22/40 loss 1.2866 dfl 0.7915 l1 0.01123 iou 0.4389 | 288s
+ep 23/40 loss 1.2828 dfl 0.7889 l1 0.01120 iou 0.4379 | 300s
+ep 24/40 loss 1.2796 dfl 0.7860 l1 0.01108 iou 0.4382 | 312s | val i0_b0.5=0.8627 i1_b0.0=0.8653 i1_b0.5=0.8597
+ep 25/40 loss 1.2717 dfl 0.7813 l1 0.01085 iou 0.4362 | 327s
+ep 26/40 loss 1.2662 dfl 0.7774 l1 0.01072 iou 0.4352 | 339s
+ep 27/40 loss 1.2656 dfl 0.7773 l1 0.01067 iou 0.4349 | 351s
+ep 28/40 loss 1.2605 dfl 0.7736 l1 0.01051 iou 0.4343 | 363s | val i0_b0.5=0.8612 i1_b0.0=0.8654 i1_b0.5=0.8599
+ep 29/40 loss 1.2588 dfl 0.7720 l1 0.01049 iou 0.4343 | 377s
+ep 30/40 loss 1.2556 dfl 0.7699 l1 0.01038 iou 0.4338 | 389s
+ep 31/40 loss 1.2540 dfl 0.7687 l1 0.01033 iou 0.4336 | 401s
+ep 32/40 loss 1.2498 dfl 0.7656 l1 0.01023 iou 0.4330 | 413s | val i0_b0.5=0.8630 i1_b0.0=0.8683 i1_b0.5=0.8648
+ep 33/40 loss 1.2512 dfl 0.7663 l1 0.01025 iou 0.4337 | 428s
+ep 34/40 loss 1.2439 dfl 0.7616 l1 0.01010 iou 0.4318 | 440s
+ep 35/40 loss 1.2429 dfl 0.7613 l1 0.01005 iou 0.4313 | 452s
+ep 36/40 loss 1.2388 dfl 0.7579 l1 0.00993 iou 0.4312 | 464s | val i0_b0.5=0.8643 i1_b0.0=0.8686 i1_b0.5=0.8656
+ep 37/40 loss 1.2412 dfl 0.7595 l1 0.00996 iou 0.4319 | 479s
+ep 38/40 loss 1.2397 dfl 0.7587 l1 0.00994 iou 0.4313 | 491s
+ep 39/40 loss 1.2392 dfl 0.7582 l1 0.00992 iou 0.4314 | 503s
+ep 40/40 loss 1.2436 dfl 0.7609 l1 0.01000 iou 0.4327 | 515s | val i0_b0.5=0.8641 i1_b0.0=0.8688 i1_b0.5=0.8660
+bitti: en iyi val 0.8689 (dedektor 0.8669)

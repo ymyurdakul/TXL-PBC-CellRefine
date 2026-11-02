@@ -1,0 +1,11 @@
+# dataset (download separately)
+TXL-PBC_Dataset-master/
+# generated outputs
+figures/output/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# detector weights and training artifacts that are not distributed
+TXLPBC_runs/train/*/weights/
+TXLPBC_runs/seeds/train/*/weights/
+TXLPBC_runs/train_cell/*/weights/

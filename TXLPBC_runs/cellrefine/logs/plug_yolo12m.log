@@ -1,0 +1,10 @@
+val iters=1 beta=0.0 lam=0.5: 0.8722
+val iters=1 beta=0.0 lam=0.75: 0.8728
+val iters=1 beta=0.0 lam=1.0: 0.8711
+val iters=2 beta=0.0 lam=0.5: 0.8727
+val iters=2 beta=0.0 lam=0.75: 0.8723
+val iters=2 beta=0.0 lam=1.0: 0.8709
+SECIM i1_b0.0_l0.75 | val 0.8687 -> 0.8728 | test 0.8777 -> 0.8808 (yalniz puan 0.8777, yalniz incelt 0.8808)
+  WBC: 0.8908 -> 0.8935
+  RBC: 0.9105 -> 0.9118
+  Platelets: 0.8317 -> 0.8372

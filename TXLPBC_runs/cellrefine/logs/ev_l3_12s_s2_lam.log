@@ -1,0 +1,42 @@
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv12s summary (fused): 159 layers, 9,232,041 parameters, 0 gradients, 23.2 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1922.8±274.5 MB/s, size: 20.6 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 40.7Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 1.4s/it 0.4s<10.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 3.9it/s 0.6s<1.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 6.4it/s 0.8s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 8.2it/s 0.9s<0.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 8.0it/s 1.0s
+                   all        126       1868       0.96      0.973      0.988      0.877
+Speed: 0.3ms preprocess, 3.6ms inference, 0.0ms loss, 0.3ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_s2_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.02s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.877
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.989
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.964
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.828
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.878
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.768
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.519
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.819
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.902
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.853
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.906
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.779
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.978
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_s2_test[0m
+val iters=1 beta=0.0 lam=0.5: 0.8697
+val iters=1 beta=0.0 lam=0.75: 0.8701
+val iters=1 beta=0.0 lam=1.0: 0.8689
+val iters=2 beta=0.0 lam=0.5: 0.8693
+val iters=2 beta=0.0 lam=0.75: 0.8687
+val iters=2 beta=0.0 lam=1.0: 0.8678
+SECIM i1_b0.0_l0.75 | val 0.8669 -> 0.8701 | test 0.8773 -> 0.8831 (yalniz puan 0.8773, yalniz incelt 0.8831)
+  WBC: 0.8953 -> 0.9011
+  RBC: 0.9063 -> 0.9085
+  Platelets: 0.8302 -> 0.8398

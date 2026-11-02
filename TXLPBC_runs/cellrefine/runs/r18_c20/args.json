@@ -1,0 +1,20 @@
+{
+  "det": "yolo26m_s0",
+  "name": "r18_c20",
+  "seed": 0,
+  "backbone": "resnet18",
+  "size": 128,
+  "ctx": 2.0,
+  "bins": 16,
+  "rng": 0.5,
+  "epochs": 40,
+  "ipb": 8,
+  "k": 6,
+  "smax": 0.15,
+  "lr": 0.0005,
+  "wd": 0.0001,
+  "w_l1": 5.0,
+  "w_iou": 1.0,
+  "eval_every": 4,
+  "geo": 1
+}

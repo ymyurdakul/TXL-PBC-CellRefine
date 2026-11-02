@@ -1,0 +1,56 @@
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO11x summary (fused): 190 layers, 56,830,489 parameters, 0 gradients, 194.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2196.6±714.6 MB/s, size: 21.1 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 44.0Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 0% ──────────── 0/8  0.4s
+Traceback (most recent call last):
+  File [35m"/workspace/project/cellrefine/eval_refine.py"[0m, line [35m50[0m, in [35m<module>[0m
+    dets = {s: [31mcached_preds[0m[1;31m(a.det, s)[0m for s in ("val", "test")}
+               [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^[0m
+  File [35m"/workspace/project/cellrefine/common.py"[0m, line [35m153[0m, in [35mcached_preds[0m
+    p, _ = [31mpredict[0m[1;31m(w, split, tag=det)[0m
+           [31m~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/workspace/project/cellrefine/common.py"[0m, line [35m56[0m, in [35mpredict[0m
+    r = m.val(data=str(ROOT / "TXLPBC_runs" / "txlpbc.yaml"), split=split, imgsz=imgsz, batch=batch, device=device,
+              save_json=True, plots=False, verbose=False, project=str(OUT / "val_json"), name=f"{tag}_{split}",
+              exist_ok=True)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/engine/model.py"[0m, line [35m645[0m, in [35mval[0m
+    [31mvalidator[0m[1;31m(model=self.model)[0m
+    [31m~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/utils/_contextlib.py"[0m, line [35m124[0m, in [35mdecorate_context[0m
+    return func(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/engine/validator.py"[0m, line [35m265[0m, in [35m__call__[0m
+    preds = model(batch["img"], augment=augment)
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/autobackend.py"[0m, line [35m342[0m, in [35mforward[0m
+    y = self.backend.forward(im, **forward_kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/backends/pytorch.py"[0m, line [35m96[0m, in [35mforward[0m
+    return [31mself.model[0m[1;31m(im, augment=augment, embed=embed, **kwargs)[0m
+           [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/tasks.py"[0m, line [35m163[0m, in [35mforward[0m
+    return [31mself.predict[0m[1;31m(x, *args, **kwargs)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/tasks.py"[0m, line [35m180[0m, in [35mpredict[0m
+    return [31mself._predict_once[0m[1;31m(x, profile, embed)[0m
+           [31m~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/tasks.py"[0m, line [35m202[0m, in [35m_predict_once[0m
+    x = m(x)  # run
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/modules/block.py"[0m, line [35m315[0m, in [35mforward[0m
+    return self.cv2([31mtorch.cat[0m[1;31m(y, 1)[0m)
+                    [31m~~~~~~~~~[0m[1;31m^^^^^^[0m
+[1;35mtorch.OutOfMemoryError[0m: [35mCUDA out of memory. Tried to allocate 504.00 MiB. GPU 0 has a total capacity of 23.54 GiB of which 392.69 MiB is free. Process 219564 has 3.52 GiB memory in use. Process 1953043 has 14.58 GiB memory in use. Process 1982886 has 3.11 GiB memory in use. Process 2011443 has 1.93 GiB memory in use. Of the allocated memory 1.10 GiB is allocated by PyTorch, and 520.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)[0m

@@ -1,0 +1,20 @@
+{
+  "det": "yolo26m_s0",
+  "name": "r18_e100_nogeo",
+  "seed": 0,
+  "backbone": "resnet18",
+  "size": 128,
+  "ctx": 1.6,
+  "bins": 16,
+  "rng": 0.5,
+  "epochs": 100,
+  "ipb": 8,
+  "k": 6,
+  "smax": 0.15,
+  "lr": 0.0005,
+  "wd": 0.0001,
+  "w_l1": 5.0,
+  "w_iou": 1.0,
+  "eval_every": 10,
+  "geo": 0
+}

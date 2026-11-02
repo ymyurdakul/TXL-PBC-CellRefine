@@ -1,0 +1,623 @@
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO11m summary (fused): 125 layers, 20,032,345 parameters, 0 gradients, 67.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2343.8±1555.4 MB/s, size: 60.4 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 58.7Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.5s/it 0.7s<37.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.1it/s 1.1s<13.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.5it/s 1.5s<8.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.8it/s 1.9s<6.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 2.0it/s 2.3s<5.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 2.2it/s 2.7s<4.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.2it/s 3.1s<4.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.3it/s 3.6s<3.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.4it/s 3.9s<2.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.5it/s 4.3s<2.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.6it/s 4.7s<1.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.6it/s 5.0s<1.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.6it/s 5.4s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.5it/s 5.8s<0.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.4it/s 6.3s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.4it/s 6.7s
+                   all        252       3737      0.976      0.961      0.989      0.863
+Speed: 0.4ms preprocess, 10.7ms inference, 0.0ms loss, 2.3ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo11m_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.860
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.984
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.949
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.787
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.867
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.894
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.486
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.804
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.885
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.819
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.916
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.995
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.962
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo11m_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO11m summary (fused): 125 layers, 20,032,345 parameters, 0 gradients, 67.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1268.0±215.9 MB/s, size: 19.1 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 29.4Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 1.9s/it 0.6s<13.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.1it/s 1.0s<5.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.5it/s 1.4s<3.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.8it/s 1.8s<2.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 2.0it/s 2.2s<1.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 2.1it/s 2.7s<1.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.2it/s 3.1s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.3it/s 3.4s
+                   all        126       1868      0.951      0.992      0.988       0.87
+Speed: 0.5ms preprocess, 11.2ms inference, 0.0ms loss, 2.7ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo11m_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.03s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.869
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.989
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.964
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.832
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.867
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.797
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.517
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.893
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.853
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.890
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.810
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.980
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo11m_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv12m summary (fused): 169 layers, 20,107,225 parameters, 0 gradients, 70.4 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1751.5±528.5 MB/s, size: 18.7 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 66.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.3s/it 0.7s<33.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.0it/s 1.1s<13.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.4it/s 1.5s<9.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.6it/s 2.0s<7.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 1.9it/s 2.4s<5.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 1.9it/s 2.9s<5.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.0it/s 3.3s<4.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.0it/s 3.8s<3.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.1it/s 4.3s<3.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.1it/s 4.7s<2.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.1it/s 5.2s<2.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.1it/s 5.7s<1.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.1it/s 6.1s<1.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.1it/s 6.6s<0.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.2it/s 7.0s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.2it/s 7.4s
+                   all        252       3737       0.98      0.963       0.99      0.869
+Speed: 0.5ms preprocess, 12.6ms inference, 0.0ms loss, 1.7ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12m_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.05s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.865
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.985
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.947
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.774
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.873
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.894
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.487
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.806
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.804
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.895
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.915
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.995
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.961
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12m_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv12m summary (fused): 169 layers, 20,107,225 parameters, 0 gradients, 70.4 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1827.3±610.3 MB/s, size: 23.2 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 31.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 2.4s/it 0.7s<17.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.1s/it 1.2s<6.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.3it/s 1.6s<3.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.6it/s 2.1s<2.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 1.7it/s 2.6s<1.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 1.9it/s 3.0s<1.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.0it/s 3.5s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.1it/s 3.8s
+                   all        126       1868      0.942      0.992      0.988      0.878
+Speed: 0.6ms preprocess, 13.0ms inference, 0.0ms loss, 1.4ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12m_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.03s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.877
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.990
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.972
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.816
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.888
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.802
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.523
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.822
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.905
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.837
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.913
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.814
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.984
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12m_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+Model summary (fused): 92 layers, 25,841,497 parameters, 0 gradients, 78.7 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1673.3±1285.1 MB/s, size: 40.1 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 62.2Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.1s/it 0.6s<32.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.3it/s 1.0s<10.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.6it/s 1.4s<8.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.9it/s 1.8s<6.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 2.2it/s 2.1s<5.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 2.7it/s 2.4s<3.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.9it/s 2.7s<3.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.8it/s 3.1s<2.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.8it/s 3.4s<2.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.7it/s 3.8s<2.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.6it/s 4.3s<1.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.5it/s 4.7s<1.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.5it/s 5.1s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.5it/s 5.5s<0.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.5it/s 5.9s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.5it/s 6.3s
+                   all        252       3737      0.971      0.945      0.985      0.861
+Speed: 0.4ms preprocess, 10.0ms inference, 0.0ms loss, 3.1ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolov8m_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.05s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.858
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.980
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.943
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.755
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.868
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.487
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.801
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.882
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.798
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.889
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.911
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.991
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.958
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolov8m_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+Model summary (fused): 92 layers, 25,841,497 parameters, 0 gradients, 78.7 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1826.0±638.4 MB/s, size: 18.7 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 66.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 1.9s/it 0.6s<13.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.1it/s 1.0s<5.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.6it/s 1.4s<3.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.9it/s 1.7s<2.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 2.1it/s 2.1s<1.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 2.2it/s 2.5s<0.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.3it/s 2.9s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.4it/s 3.3s
+                   all        126       1868      0.976      0.969      0.987      0.872
+Speed: 0.5ms preprocess, 10.0ms inference, 0.0ms loss, 2.3ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolov8m_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.02s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.871
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.988
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.961
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.825
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.867
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.767
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.522
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.820
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.902
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.858
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.897
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.780
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.998
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.975
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolov8m_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv10m summary (fused): 133 layers, 15,314,905 parameters, 0 gradients, 59.0 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2349.3±1450.5 MB/s, size: 51.2 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 70.5Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.2s/it 0.6s<32.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.1it/s 1.0s<12.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.6it/s 1.4s<8.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.9it/s 1.8s<6.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 2.1it/s 2.2s<5.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 2.2it/s 2.6s<4.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.3it/s 3.0s<3.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.4it/s 3.4s<3.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.4it/s 3.8s<2.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.4it/s 4.2s<2.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.4it/s 4.6s<2.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.5it/s 5.0s<1.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.5it/s 5.4s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.5it/s 5.8s<0.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.5it/s 6.2s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.5it/s 6.5s
+                   all        252       3737      0.963      0.968      0.986      0.869
+Speed: 0.4ms preprocess, 10.1ms inference, 0.0ms loss, 2.4ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolov10m_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.866
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.981
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.958
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.779
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.871
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.895
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.488
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.806
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.917
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.992
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.971
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolov10m_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv10m summary (fused): 133 layers, 15,314,905 parameters, 0 gradients, 59.0 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2796.6±1370.8 MB/s, size: 43.5 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 37.7Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 1.9s/it 0.6s<13.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.2it/s 0.9s<5.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.6it/s 1.3s<3.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.9it/s 1.7s<2.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 2.1it/s 2.1s<1.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 2.2it/s 2.5s<0.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.3it/s 2.9s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.4it/s 3.3s
+                   all        126       1868      0.967       0.97      0.989      0.869
+Speed: 0.5ms preprocess, 10.3ms inference, 0.0ms loss, 1.9ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolov10m_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.02s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.868
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.991
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.969
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.791
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.873
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.829
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.513
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.812
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.893
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.897
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.874
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.981
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolov10m_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv9m summary (fused): 151 layers, 20,015,161 parameters, 0 gradients, 76.5 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2669.9±1168.3 MB/s, size: 54.8 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 50.3Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.4s/it 0.7s<35.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.2it/s 1.1s<12.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.5it/s 1.5s<8.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.8it/s 1.9s<6.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 1.9it/s 2.4s<5.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 2.0it/s 2.8s<4.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.1it/s 3.2s<4.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.2it/s 3.6s<3.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.2it/s 4.1s<3.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.3it/s 4.5s<2.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.4it/s 4.9s<2.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.4it/s 5.3s<1.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.3it/s 5.8s<1.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.4it/s 6.2s<0.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.4it/s 6.6s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.3it/s 7.0s
+                   all        252       3737      0.969      0.953      0.988      0.865
+Speed: 0.5ms preprocess, 12.3ms inference, 0.0ms loss, 2.2ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolov9m_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.862
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.983
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.940
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.782
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.868
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.891
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.488
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.806
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.886
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.823
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.885
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.914
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.994
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.957
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolov9m_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLOv9m summary (fused): 151 layers, 20,015,161 parameters, 0 gradients, 76.5 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2379.9±866.3 MB/s, size: 43.9 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 31.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 2.4s/it 0.7s<16.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.0s/it 1.1s<6.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.5it/s 1.5s<3.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.7it/s 2.0s<2.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 1.9it/s 2.4s<1.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 2.1it/s 2.8s<0.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.2it/s 3.2s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.2it/s 3.6s
+                   all        126       1868      0.957      0.977      0.988      0.872
+Speed: 0.4ms preprocess, 11.7ms inference, 0.0ms loss, 1.5ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolov9m_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.03s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.871
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.989
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.961
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.822
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.865
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.865
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.518
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.815
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.897
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.858
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.891
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.877
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.998
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.977
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolov9m_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO26s summary (fused): 120 layers, 9,466,341 parameters, 0 gradients, 20.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1749.4±306.5 MB/s, size: 15.9 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 117.4Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 1.9s/it 0.6s<28.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.3it/s 0.9s<10.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.7it/s 1.3s<7.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 2.1it/s 1.6s<5.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 2.3it/s 2.0s<4.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 2.5it/s 2.3s<4.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.6it/s 2.7s<3.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.7it/s 3.0s<3.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.7it/s 3.4s<2.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.8it/s 3.7s<2.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.8it/s 4.1s<1.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.8it/s 4.4s<1.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.9it/s 4.7s<1.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.8it/s 5.1s<0.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.8it/s 5.5s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.8it/s 5.7s
+                   all        252       3737      0.971      0.952      0.988      0.867
+Speed: 0.4ms preprocess, 4.6ms inference, 0.0ms loss, 5.5ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26s_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.863
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.984
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.956
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.751
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.880
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.893
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.488
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.807
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.889
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.789
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.904
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.916
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.995
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.972
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26s_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO26s summary (fused): 120 layers, 9,466,341 parameters, 0 gradients, 20.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2336.3±945.7 MB/s, size: 27.5 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 35.2Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 2.0s/it 0.6s<14.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.2it/s 1.0s<5.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.7it/s 1.3s<2.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 2.1it/s 1.7s<1.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 2.6it/s 1.9s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 2.7it/s 2.2s<0.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.8it/s 2.6s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.8it/s 2.9s
+                   all        126       1868      0.959      0.988      0.989      0.868
+Speed: 0.6ms preprocess, 4.8ms inference, 0.0ms loss, 3.9ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26s_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.02s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.867
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.991
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.968
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.805
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.861
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.865
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.516
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.811
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.894
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.832
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.877
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.982
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26s_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO26l summary (fused): 188 layers, 24,748,053 parameters, 0 gradients, 86.5 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2083.9±649.5 MB/s, size: 21.0 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 66.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.5s/it 0.8s<38.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.0it/s 1.2s<13.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.5it/s 1.6s<8.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.7it/s 2.0s<6.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 1.9it/s 2.4s<5.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 2.0it/s 2.9s<5.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 2.0it/s 3.4s<4.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 2.1it/s 3.8s<3.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 2.1it/s 4.2s<3.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 2.2it/s 4.7s<2.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 2.2it/s 5.1s<2.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 2.3it/s 5.5s<1.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 2.3it/s 6.0s<1.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 2.3it/s 6.4s<0.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 2.3it/s 6.8s<0.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 2.2it/s 7.2s
+                   all        252       3737      0.978      0.964       0.99      0.865
+Speed: 0.4ms preprocess, 12.7ms inference, 0.0ms loss, 1.3ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26l_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.862
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.985
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.950
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.771
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.868
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.894
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.486
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.806
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.888
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.817
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.889
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.915
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.995
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.967
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26l_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO26l summary (fused): 188 layers, 24,748,053 parameters, 0 gradients, 86.5 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2014.9±961.2 MB/s, size: 46.5 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 29.4Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 2.4s/it 0.7s<17.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.1s/it 1.2s<6.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.3it/s 1.6s<3.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.6it/s 2.1s<2.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 1.8it/s 2.5s<1.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 1.9it/s 3.0s<1.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.0it/s 3.4s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.1it/s 3.8s
+                   all        126       1868      0.976      0.966      0.985      0.871
+Speed: 0.5ms preprocess, 13.3ms inference, 0.0ms loss, 1.9ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26l_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.03s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.871
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.987
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.961
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.836
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.868
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.799
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.518
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.816
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.900
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.863
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.899
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.810
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.980
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26l_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO26x summary (fused): 188 layers, 55,637,013 parameters, 0 gradients, 193.9 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 3056.8±1194.5 MB/s, size: 46.2 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 117.4Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 3.0s/it 0.9s<45.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.1s/it 1.4s<15.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.1it/s 2.0s<11.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.3it/s 2.6s<9.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 1.4it/s 3.2s<8.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 1.5it/s 3.8s<6.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 1.6it/s 4.3s<5.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 1.6it/s 5.0s<5.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 1.6it/s 5.6s<4.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 1.7it/s 6.1s<3.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 1.6it/s 6.8s<3.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 1.6it/s 7.4s<2.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 1.7it/s 7.9s<1.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 1.7it/s 8.6s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 1.7it/s 9.1s<0.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 1.7it/s 9.5s
+                   all        252       3737       0.98      0.957      0.989      0.871
+Speed: 0.5ms preprocess, 19.4ms inference, 0.0ms loss, 3.4ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26x_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.05s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.868
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.986
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.952
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.778
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.878
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.892
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.488
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.809
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.891
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.815
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.898
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.915
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.997
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.966
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26x_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO26x summary (fused): 188 layers, 55,637,013 parameters, 0 gradients, 193.9 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2232.6±598.0 MB/s, size: 32.0 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 35.2Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 2.3s/it 0.7s<15.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 2/8 1.1it/s 1.1s<5.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 3/8 1.4it/s 1.5s<3.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 4/8 1.7it/s 2.0s<2.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 5/8 1.8it/s 2.4s<1.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 6/8 1.9it/s 2.9s<1.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 7/8 2.0it/s 3.3s<0.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 8/8 2.2it/s 3.7s
+                   all        126       1868      0.962      0.982      0.986      0.876
+Speed: 0.4ms preprocess, 17.5ms inference, 0.0ms loss, 2.4ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26x_test/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.04s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.875
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.987
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.972
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.840
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.875
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.798
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.518
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.819
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.901
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.863
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.903
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.810
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.986
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo26x_test[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO11x summary (fused): 190 layers, 56,830,489 parameters, 0 gradients, 194.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 1946.9±637.6 MB/s, size: 29.0 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/val.cache... 252 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 252/252 66.1Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/val/0ac132c270355979b686c0801e558849.png: 15 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 1/16 2.0s/it 0.6s<30.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 2/16 1.0it/s 1.1s<13.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 18% ━━────────── 3/16 1.2it/s 1.6s<10.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 4/16 1.4it/s 2.2s<8.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 5/16 1.5it/s 2.8s<7.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 6/16 1.5it/s 3.4s<6.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 43% ━━━━━─────── 7/16 1.6it/s 4.0s<5.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 8/16 1.6it/s 4.6s<5.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 56% ━━━━━━╸───── 9/16 1.6it/s 5.2s<4.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 10/16 1.6it/s 5.8s<3.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 11/16 1.6it/s 6.4s<3.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 12/16 1.7it/s 7.0s<2.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 81% ━━━━━━━━━╸── 13/16 1.7it/s 7.6s<1.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 14/16 1.7it/s 8.2s<1.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 15/16 1.7it/s 8.7s<0.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 16/16 1.7it/s 9.2s
+                   all        252       3737      0.984      0.955      0.988      0.868
+Speed: 0.5ms preprocess, 20.0ms inference, 0.0ms loss, 2.4ms postprocess per image
+Saving /workspace/project/TXLPBC_runs/cellrefine/val_json/yolo11x_val/predictions.json...
+
+Evaluating faster-coco-eval mAP...
+Evaluate annotation type *bbox*
+COCOeval_opt.evaluate() finished...
+DONE (t=0.05s).
+Accumulating evaluation results...
+COCOeval_opt.accumulate() finished...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.865
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.985
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.956
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.775
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.874
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.892
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.489
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.808
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.890
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.809
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.896
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.914
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.998
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.972
+Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo11x_val[0m
+Ultralytics 8.4.191 🚀 Python-3.13.14 torch-2.11.0+cu128 CUDA:0 (NVIDIA RTX A5500, 24105MiB)
+YOLO11x summary (fused): 190 layers, 56,830,489 parameters, 0 gradients, 194.8 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2316.8±1106.9 MB/s, size: 31.0 KB)
+[K[34m[1mval: [0mScanning /workspace/project/TXL-PBC_Dataset-master/TXL-PBC/labels/test.cache... 126 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 126/126 29.4Mit/s 0.0s
+[34m[1mval: [0m/workspace/project/TXL-PBC_Dataset-master/TXL-PBC/images/test/1299047edeb15e2581d9680aaa667d5d.png: 13 duplicate labels removed
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 2.8s/it 0.8s<19.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 1/8 4.0s/it 1.0s<28.0s
+Traceback (most recent call last):
+  File [35m"<string>"[0m, line [35m1[0m, in [35m<module>[0m
+    import sys; sys.path.insert(0,'/workspace/project'); from cellrefine.common import cached_preds; [[31mcached_preds[0m[1;31m(d,s)[0m for d in 'yolo11m yolo12m yolov8m yolov10m yolov9m yolo26s yolo26l yolo26x yolo11x yolo11s'.split() for s in ('val','test')]; print('PREDS OK')
+                                                                                                      [31m~~~~~~~~~~~~[0m[1;31m^^^^^[0m
+  File [35m"/workspace/project/cellrefine/common.py"[0m, line [35m153[0m, in [35mcached_preds[0m
+    p, _ = [31mpredict[0m[1;31m(w, split, tag=det)[0m
+           [31m~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/workspace/project/cellrefine/common.py"[0m, line [35m56[0m, in [35mpredict[0m
+    r = m.val(data=str(ROOT / "TXLPBC_runs" / "txlpbc.yaml"), split=split, imgsz=imgsz, batch=batch, device=device,
+              save_json=True, plots=False, verbose=False, project=str(OUT / "val_json"), name=f"{tag}_{split}",
+              exist_ok=True)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/engine/model.py"[0m, line [35m645[0m, in [35mval[0m
+    [31mvalidator[0m[1;31m(model=self.model)[0m
+    [31m~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/utils/_contextlib.py"[0m, line [35m124[0m, in [35mdecorate_context[0m
+    return func(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/engine/validator.py"[0m, line [35m265[0m, in [35m__call__[0m
+    preds = model(batch["img"], augment=augment)
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/autobackend.py"[0m, line [35m342[0m, in [35mforward[0m
+    y = self.backend.forward(im, **forward_kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/backends/pytorch.py"[0m, line [35m96[0m, in [35mforward[0m
+    return [31mself.model[0m[1;31m(im, augment=augment, embed=embed, **kwargs)[0m
+           [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/tasks.py"[0m, line [35m163[0m, in [35mforward[0m
+    return [31mself.predict[0m[1;31m(x, *args, **kwargs)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/tasks.py"[0m, line [35m180[0m, in [35mpredict[0m
+    return [31mself._predict_once[0m[1;31m(x, profile, embed)[0m
+           [31m~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/tasks.py"[0m, line [35m202[0m, in [35m_predict_once[0m
+    x = m(x)  # run
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/modules/block.py"[0m, line [35m315[0m, in [35mforward[0m
+    return [31mself.cv2[0m[1;31m(torch.cat(y, 1))[0m
+           [31m~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/ultralytics/nn/modules/conv.py"[0m, line [35m98[0m, in [35mforward_fuse[0m
+    return self.act([31mself.conv[0m[1;31m(x)[0m)
+                    [31m~~~~~~~~~[0m[1;31m^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1779[0m, in [35m_wrapped_call_impl[0m
+    return [31mself._call_impl[0m[1;31m(*args, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/module.py"[0m, line [35m1790[0m, in [35m_call_impl[0m
+    return forward_call(*args, **kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/conv.py"[0m, line [35m553[0m, in [35mforward[0m
+    return [31mself._conv_forward[0m[1;31m(input, self.weight, self.bias)[0m
+           [31m~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/torch/nn/modules/conv.py"[0m, line [35m548[0m, in [35m_conv_forward[0m
+    return [31mF.conv2d[0m[1;31m([0m
+           [31m~~~~~~~~[0m[1;31m^[0m
+        [1;31minput, weight, bias, self.stride, self.padding, self.dilation, self.groups[0m
+        [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    [1;31m)[0m
+    [1;31m^[0m
+[1;35mtorch.OutOfMemoryError[0m: [35mCUDA out of memory. Tried to allocate 662.00 MiB. GPU 0 has a total capacity of 23.54 GiB of which 608.69 MiB is free. Process 219564 has 3.52 GiB memory in use. Process 1819507 has 3.10 GiB memory in use. Process 1953043 has 12.52 GiB memory in use. Process 1966423 has 3.78 GiB memory in use. Of the allocated memory 2.57 GiB is allocated by PyTorch, and 904.93 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)[0m

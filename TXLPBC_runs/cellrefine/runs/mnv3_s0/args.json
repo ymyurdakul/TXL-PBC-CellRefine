@@ -1,0 +1,23 @@
+{
+  "det": "yolo26m_s0",
+  "name": "mnv3_s0",
+  "seed": 0,
+  "backbone": "mnv3l",
+  "size": 128,
+  "ctx": 1.6,
+  "bins": 16,
+  "rng": 0.5,
+  "epochs": 40,
+  "ipb": 8,
+  "k": 6,
+  "smax": 0.15,
+  "lr": 0.0005,
+  "wd": 0.0001,
+  "w_l1": 5.0,
+  "w_iou": 1.0,
+  "eval_every": 4,
+  "geo": 1,
+  "teacher": "",
+  "w_kd": 1.0,
+  "kd_T": 2.0
+}

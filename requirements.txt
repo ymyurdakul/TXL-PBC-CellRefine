@@ -1,0 +1,10 @@
+# reproduction from cached predictions (analysis/reproduce_cellrefine.py) needs torch, torchvision, numpy, pandas, pillow
+torch>=2.1
+torchvision>=0.16
+numpy
+pandas
+pillow
+matplotlib
+scipy
+# training and evaluation of the detectors and refiners (Ultralytics version used in the study)
+ultralytics==8.4.191
