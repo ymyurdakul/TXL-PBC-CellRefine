@@ -1,5 +1,5 @@
 #!/bin/bash
-# CellRefine ana deney: 3 tohum (dedektor tohumu k + refiner tohumu k)
+# CellRefine main experiment: three runs (detector seed k + refiner seed k)
 cd "$(dirname "$0")/.."
 L=TXLPBC_runs/cellrefine/logs
 G="--iters 1,2 --betas 0 --lams 0.5,0.75,1.0"
@@ -9,4 +9,4 @@ for s in 1 2; do
   python cellrefine/train_refine.py --det yolo26m_s$s --name r18_s$s --seed $s > $L/r18_s$s.log 2>&1
   python cellrefine/eval_refine.py --det yolo26m_s$s --run r18_s$s $G --tag _lam > $L/ev_r18_s${s}_lam.log 2>&1
 done
-echo BITTI > $L/main_done.txt
+echo DONE > $L/main_done.txt

@@ -32,8 +32,8 @@ DONE (t=0.00s).
  Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.999
  Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.988
 Results saved to [1m/workspace/project/TXLPBC_runs/cellrefine/val_json/yolo12s_train[0m
-veri hazir 8s | train 882 val 252 | dedektor val mAP50-95=0.8617
-model parametre: 4.17M | adim 4440
+data ready 8s | train 882 val 252 | detector val mAP50-95=0.8617
+model parameters: 4.17M | steps 4440
 ep 1/40 loss 2.7183 dfl 1.9601 l1 0.04842 iou 0.5162 | 21s
 ep 2/40 loss 1.6699 dfl 1.0954 l1 0.02487 iou 0.4501 | 33s
 ep 3/40 loss 1.4660 dfl 0.9359 l1 0.01695 iou 0.4453 | 45s
@@ -74,4 +74,4 @@ ep 37/40 loss 1.2333 dfl 0.7545 l1 0.00983 iou 0.4296 | 476s
 ep 38/40 loss 1.2361 dfl 0.7563 l1 0.00991 iou 0.4302 | 488s
 ep 39/40 loss 1.2337 dfl 0.7550 l1 0.00984 iou 0.4294 | 500s
 ep 40/40 loss 1.2309 dfl 0.7536 l1 0.00979 iou 0.4283 | 512s | val i0_b0.5=0.8579 i1_b0.0=0.8635 i1_b0.5=0.8599
-bitti: en iyi val 0.8643 (dedektor 0.8617)
+done: best val 0.8643 (detector 0.8617)

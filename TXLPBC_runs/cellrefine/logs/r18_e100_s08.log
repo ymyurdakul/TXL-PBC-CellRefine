@@ -1,5 +1,5 @@
-veri hazir 2s | train 882 val 252 | dedektor val mAP50-95=0.8655
-model parametre: 12.59M | adim 11100
+data ready 2s | train 882 val 252 | detector val mAP50-95=0.8655
+model parameters: 12.59M | steps 11100
 ep 1/100 loss 2.2159 dfl 1.6765 l1 0.02424 iou 0.4181 | 28s
 ep 2/100 loss 1.3246 dfl 0.9022 l1 0.01446 iou 0.3501 | 54s
 ep 3/100 loss 1.2110 dfl 0.8071 l1 0.01127 iou 0.3476 | 87s
@@ -100,4 +100,4 @@ ep 97/100 loss 0.9844 dfl 0.6294 l1 0.00515 iou 0.3293 | 1689s
 ep 98/100 loss 0.9828 dfl 0.6282 l1 0.00512 iou 0.3290 | 1703s
 ep 99/100 loss 0.9830 dfl 0.6287 l1 0.00511 iou 0.3288 | 1718s
 ep 100/100 loss 0.9806 dfl 0.6271 l1 0.00507 iou 0.3282 | 1733s | val i0_b0.5=0.8628 i1_b0.0=0.8650 i1_b0.5=0.8612
-bitti: en iyi val 0.8652 (dedektor 0.8655)
+done: best val 0.8652 (detector 0.8655)

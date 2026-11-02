@@ -88,14 +88,14 @@ S['test'].to_json(f'{OUT}/summary_test.json', orient='index')
 S['val'].to_json(f'{OUT}/summary_val.json', orient='index')
 
 # ---- consistency checks against the author's own summary files
-oz = pd.read_csv(f'{U}/ozet_tablo_test.csv')
+ref = pd.read_csv(f'{U}/summary_table_test.csv')
 chk = df[(df.split == 'test') & (df.seed == 0)].set_index('model')
 bad = 0
-for _, r in oz.iterrows():
+for _, r in ref.iterrows():
     for a, b in (('P', 'P'), ('R', 'R'), ('mAP50', 'mAP50'), ('mAP50-95', 'mAP50-95'), ('Params (M)', 'params_M'), ('GFLOPs', 'GFLOPs'), ('AP50-95 Platelets', 'AP50-95_Platelets')):
         if abs(r[a] - chk.loc[r['Model'], b]) > 5e-5:
             bad += 1; print('MISMATCH', r['Model'], a, r[a], chk.loc[r['Model'], b])
-print('ozet_tablo_test mismatches:', bad, 'of', len(oz) * 7)
+print('summary_table_test mismatches:', bad, 'of', len(ref) * 7)
 
 # ---- quick report
 t = S['test']

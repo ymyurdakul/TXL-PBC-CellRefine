@@ -1,4 +1,4 @@
-"""CellRefine ortak araclar: veri yukleme, dedektor tahmini, ultralytics ile ayni mAP hesabi."""
+"""CellRefine shared tools: data loading, detector predictions, and the mAP computation of Ultralytics."""
 import glob
 import os
 from pathlib import Path
@@ -11,7 +11,7 @@ OUT = ROOT / "TXLPBC_runs" / "cellrefine"
 NAMES = ["WBC", "RBC", "Platelets"]
 IOUV = np.linspace(0.5, 0.95, 10)
 
-# 3 tohumlu yolo26m dedektorleri (mevcut tablodaki temel modeller)
+# YOLO26-m detectors of the three runs (the baseline models of the benchmark)
 DETECTORS = {
     "yolo26m_s0": ROOT / "TXLPBC_runs/train/yolo26m/weights/best.pt",
     "yolo26m_s1": ROOT / "TXLPBC_runs/train_cell/base_yolo26m_s1/weights/best.pt",
@@ -35,7 +35,7 @@ def load_gt(img, wh):
         return np.zeros((0, 4), np.float32), np.zeros((0,), np.int64)
     a = np.loadtxt(lp, ndmin=2).astype(np.float32)
     if a.size:
-        a = np.unique(a, axis=0)  # ultralytics gibi tekrarlanan etiketleri at
+        a = np.unique(a, axis=0)  # drop duplicate labels, as Ultralytics does
     if a.size == 0:
         return np.zeros((0, 4), np.float32), np.zeros((0,), np.int64)
     c, x, y, bw, bh = a[:, 0], a[:, 1] * w, a[:, 2] * h, a[:, 3] * w, a[:, 4] * h
@@ -44,8 +44,8 @@ def load_gt(img, wh):
 
 
 def predict(weights, split, imgsz=640, batch=16, device=0, tag=None):
-    """Dedektor tahminleri, ultralytics val() ile ayni on-isleme (rect, half, conf=0.001, max_det=300).
-    Cikti: {img_yolu: dict(box=(N,4) piksel xyxy, conf=(N,), cls=(N,), wh=(w,h))}"""
+    """Detector predictions with the same preprocessing as Ultralytics val() (rect, half, conf=0.001, max_det=300).
+    Output: {image_path: dict(box=(N,4) pixel xyxy, conf=(N,), cls=(N,), wh=(w,h))}"""
     import json
 
     from PIL import Image
@@ -88,7 +88,7 @@ def box_iou(a, b):
 
 
 def match_predictions(pred_cls, true_cls, iou):
-    """ultralytics BaseValidator.match_predictions ile ayni (iou: gt x pred)."""
+    """Same as Ultralytics BaseValidator.match_predictions (iou: gt x pred)."""
     correct = np.zeros((len(pred_cls), len(IOUV)), bool)
     iou = iou * (true_cls[:, None] == pred_cls[None, :])
     for i, t in enumerate(IOUV):
@@ -103,7 +103,7 @@ def match_predictions(pred_cls, true_cls, iou):
 
 
 def evaluate(preds, gts):
-    """preds/gts: {img: dict(box, conf, cls)} / {img: (box, cls)} -> metrik sozlugu (ultralytics ap_per_class)."""
+    """preds/gts: {img: dict(box, conf, cls)} / {img: (box, cls)} -> metric dictionary (Ultralytics ap_per_class)."""
     from ultralytics.utils.metrics import ap_per_class
 
     tps, confs, pcls, tcls = [], [], [], []
@@ -149,7 +149,7 @@ def cached_preds(det, split):
         return {str(DS / "images" / split / Path(k).name): v for k, v in pickle.loads(f.read_bytes()).items()}
     f.parent.mkdir(parents=True, exist_ok=True)
     w = DETECTORS.get(det)
-    if w is None:  # ornek: yolo11m (tohum 0) veya yolo11m_s1 (seeds/train)
+    if w is None:  # e.g., yolo11m (seed 0) or yolo11m_s1 (seeds/train)
         w = ROOT / "TXLPBC_runs" / ("seeds/train" if det[-3:-1] == "_s" else "train") / det / "weights" / "best.pt"
     p, _ = predict(w, split, tag=det)
     f.write_bytes(pickle.dumps(p))

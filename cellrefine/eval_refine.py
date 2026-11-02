@@ -1,5 +1,5 @@
-"""CellRefine degerlendirmesi: hiperparametreler (iters, beta) yalnizca val'de secilir, test bir kez raporlanir.
-Ornek: python cellrefine/eval_refine.py --det yolo26m_s0 --run r18_s0
+"""CellRefine evaluation: the settings (iters, beta, lam) are selected on the validation set only, and the test set
+is evaluated a single time. Example: python cellrefine/eval_refine.py --det yolo26m_s0 --run r18_s0
 """
 import argparse
 import json
@@ -73,7 +73,7 @@ res["refine_ms_per_img"] = round((time.time() - t0) * 1000 / len(dets["test"]), 
 res["boxes_per_img"] = round(n_box / len(dets["test"]), 1)
 res["val"] = evaluate(refine_preds(model, dets["val"], data["val"][0], iters=it, beta=beta), data["val"][1])
 res["test"] = evaluate(ref_test, data["test"][1])
-# bilesen ayrimi (ayni secilen ayarlarla)
+# component analysis (with the same selected settings)
 res["test_rescore_only"] = evaluate(refine_preds(model, dets["test"], data["test"][0], iters=0, beta=beta),
                                     data["test"][1])
 res["test_refine_only"] = evaluate(refine_preds(model, dets["test"], data["test"][0], iters=max(it, 1), beta=0.0),
@@ -82,8 +82,8 @@ d = OUT / "metrics"
 d.mkdir(parents=True, exist_ok=True)
 (d / f"{a.run}{a.tag}.json").write_text(json.dumps(res, indent=2))
 b, t = res["base_test"], res["test"]
-print(f"SECIM {key} | val {res['base_val']['mAP50-95']:.4f} -> {res['val']['mAP50-95']:.4f} | test "
-      f"{b['mAP50-95']:.4f} -> {t['mAP50-95']:.4f} (yalniz puan {res['test_rescore_only']['mAP50-95']:.4f}, "
-      f"yalniz incelt {res['test_refine_only']['mAP50-95']:.4f})", flush=True)
+print(f"SELECTED {key} | val {res['base_val']['mAP50-95']:.4f} -> {res['val']['mAP50-95']:.4f} | test "
+      f"{b['mAP50-95']:.4f} -> {t['mAP50-95']:.4f} (rescoring only {res['test_rescore_only']['mAP50-95']:.4f}, "
+      f"refinement only {res['test_refine_only']['mAP50-95']:.4f})", flush=True)
 for c in ("WBC", "RBC", "Platelets"):
     print(f"  {c}: {b[f'AP50-95_{c}']:.4f} -> {t[f'AP50-95_{c}']:.4f}")

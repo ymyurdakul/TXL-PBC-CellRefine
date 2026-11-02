@@ -1,5 +1,5 @@
 #!/bin/bash
-# GPU1: (a) r18 refiner'i yolo12n'e tak, (b) r18_s0 ogretmenden damitilmis hafif resnet18_l3 refiner
+# GPU 1: (a) apply the r18 refiner to yolo12n, (b) light resnet18_l3 refiner distilled from the r18_s0 teacher
 cd "$(dirname "$0")/.."
 L=TXLPBC_runs/cellrefine/logs
 G="--iters 1,2 --betas 0 --lams 0.5,0.75,1.0"
@@ -10,4 +10,4 @@ for D in yolo26m_s0 yolo12s yolo12n; do
   if [ $D = yolo26m_s0 ]; then T=_lam; else T=_on_$D; fi
   python cellrefine/eval_refine.py --det $D --run l3kd_s0 $G --tag $T > $L/ev_l3kd_s0$T.log 2>&1
 done
-echo BITTI > $L/kd_done.txt
+echo DONE > $L/kd_done.txt

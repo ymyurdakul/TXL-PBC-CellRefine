@@ -1,10 +1,10 @@
-"""CellRefine: dedektor kutularini yuksek cozunurluklu hucre kesitleri uzerinde inceltip IoU-farkindalikli
-yeniden puanlayan hafif ikinci asama.
+"""CellRefine: a light second stage that refines detector boxes on high-resolution cell crops and can rescore
+them with a predicted IoU.
 
-Her kutu icin baglamli bolge (kutu x ctx) orijinal goruntuden RoIAlign ile SxS kesilir. Ag, kutu kenarlarinin
-duzeltmesini (kutu boyutuna gore normalize dx1, dy1, dx2, dy2) ve kutunun gercek kutuyla IoU'sunu tahmin eder.
-Kenarlar ayrik olasilik dagilimi (DFL benzeri, -R..R araliginda K kutucuk) olarak modellenir; beklenen deger
-duzeltmeyi verir.
+For each box, a context region (box x ctx) is cropped from the original image with RoIAlign at S x S. The network
+predicts edge corrections (dx1, dy1, dx2, dy2, normalized by the box size) and the IoU of the box with its ground
+truth box. Each edge is modeled as a discrete distribution (DFL style, K bins over -R..R); its expectation gives
+the correction.
 """
 import numpy as np
 import torch
@@ -24,7 +24,7 @@ def expand(boxes, ctx):
 
 
 def crops(img, boxes, size, ctx):
-    """img: (3,H,W) float [0,1] (normalize edilmis), boxes: (N,4) -> (N,3,S,S)"""
+    """img: (3,H,W) float, normalized; boxes: (N,4) -> (N,3,S,S)"""
     rois = torch.cat([boxes.new_zeros(len(boxes), 1), expand(boxes, ctx)], 1)
     return roi_align(img[None], rois, (size, size), 1.0, 2, aligned=True)
 
@@ -39,10 +39,10 @@ class CellRefiner(nn.Module):
         elif backbone == "resnet34":
             m = torchvision.models.resnet34(weights="IMAGENET1K_V1" if pretrained else None)
             ch = 512
-        elif backbone == "resnet18_l3":  # hafif: layer4 cikarildi (~8.4M parametre tasarrufu)
+        elif backbone == "resnet18_l3":  # light: layer4 removed (about 8.4M fewer parameters)
             m = torchvision.models.resnet18(weights="IMAGENET1K_V1" if pretrained else None)
             ch = 256
-        elif backbone == "mnv3l":  # hafif: MobileNetV3-Large ozellik cikarici
+        elif backbone == "mnv3l":  # light: MobileNetV3-Large feature extractor
             m = torchvision.models.mobilenet_v3_large(weights="IMAGENET1K_V1" if pretrained else None)
             ch = 960
         else:
@@ -54,7 +54,7 @@ class CellRefiner(nn.Module):
         else:
             self.body = nn.Sequential(m.conv1, m.bn1, m.relu, m.maxpool, m.layer1, m.layer2, m.layer3, m.layer4)
         s = size // 32
-        # AdaptiveAvgPool parametresizdir; resnet18 (128px) icin birim islem, eski agirliklarla uyumlu
+        # AdaptiveAvgPool has no parameters; identity for resnet18 at 128 px, compatible with older weights
         self.red = nn.Sequential(nn.Conv2d(ch, 128, 1, bias=False), nn.BatchNorm2d(128), nn.ReLU(inplace=True),
                                  nn.AdaptiveAvgPool2d(s))
         d = 128 * s * s + nc + 2
@@ -73,7 +73,7 @@ class CellRefiner(nn.Module):
         return delta, logits, self.iou(h).squeeze(1)
 
     def dfl_loss(self, logits, target):
-        """target: (N,4) normalize kenar duzeltmesi, [-rng, rng] araligina kirpilir; iki komsu kutucuga dagitilir."""
+        """target: (N,4) normalized edge corrections, clipped to [-rng, rng] and split between the two nearest bins."""
         t = (target.clamp(-self.rng, self.rng * 0.9999) + self.rng) / (2 * self.rng) * self.bins
         tl = t.floor().long()
         wr = t - tl
@@ -93,7 +93,7 @@ def to_tensor(img_np, device):
 
 
 def _tta_forward(model, x, cc, wh, tta):
-    """D4 test-zamani artirimi: kesit cevrilir/transpoz edilir, kenar duzeltmeleri geri eslenerek ortalanir."""
+    """D4 test-time augmentation: the crop is flipped/transposed, and the edge corrections are mapped back and averaged."""
     if tta <= 1:
         d, _, u = model(x, cc, wh)
         return d.float(), u.float().sigmoid()
@@ -123,7 +123,8 @@ def _tta_forward(model, x, cc, wh, tta):
 @torch.no_grad()
 def refine_preds(model, preds, images, iters=1, beta=0.5, chunk=512, device="cuda", tta=1, lam=1.0):
     """preds: {img: dict(box, conf, cls, wh)}; images: {img: HxWx3 uint8 RGB}
-    beta: yeni skor = conf^(1-beta) * iou^beta. iters: ayni ag ile ardisik inceltme sayisi. tta: 1, 4 veya 8."""
+    beta: new score = conf^(1-beta) * iou^beta. iters: number of successive refinement passes. tta: 1, 4, or 8.
+    lam: final box = lam * refined + (1 - lam) * detector box."""
     model.eval()
     out = {}
     for k, p in preds.items():
@@ -135,7 +136,7 @@ def refine_preds(model, preds, images, iters=1, beta=0.5, chunk=512, device="cud
         b = torch.from_numpy(p["box"]).to(device)
         c = torch.from_numpy(p["cls"]).to(device)
         H, W = img.shape[1:]
-        for it in range(iters + 1):  # iters kez incelt, son geciste yalnizca IoU puanla
+        for it in range(iters + 1):  # refine `iters` times; the last pass only predicts the IoU
             nb, ious = [], []
             for i in range(0, len(b), chunk):
                 bb, cc = b[i:i + chunk], c[i:i + chunk]

@@ -1,6 +1,6 @@
-# 43 temel YOLO modelini ek tohumlarla (varsayilan seed 1,2) egitir ve degerlendirir; seed 0 = train_all_yolo.py.
-# Modeller seed-0 val mAP50-95 sirasina gore islenir (yarida kalsa bile ust siradakiler tamamlanmis olur).
-# Calistirma: nohup python cellyolo/seeds_all.py 1 2 > seeds_all.log 2>&1 &   (tekrar calistirinca bitenler atlanir)
+# Trains and evaluates the 43 YOLO models with additional seeds (default 1 and 2); seed 0 is train_all_yolo.py.
+# Models are processed in order of their seed-0 validation mAP50-95, so the best models finish first.
+# Run: nohup python benchmark/seeds_all.py 1 2 > seeds_all.log 2>&1 &   (finished runs are skipped on a rerun)
 import os, sys, json, time, shutil, traceback
 
 os.environ.setdefault("CUDA_VISIBLE_DEVICES", "1")
@@ -42,7 +42,7 @@ def metrics_of(r):
 base = [json.loads(f.read_text()) for f in (OUT / "metrics").glob("*.json")]
 base.sort(key=lambda j: -j["val"]["mAP50-95"])
 
-# yolo26m icin seed 1-2 train_cell ile ayni ayarlarla zaten egitildi -> yeniden kullan
+# YOLO26-m seeds 1 and 2 were already trained with the same settings (train_cell); reuse them
 for s in (1, 2):
     src = OUT / "metrics_cell" / f"base_yolo26m_s{s}.json"
     dst = MS / f"yolo26m_s{s}.json"
@@ -68,7 +68,7 @@ for j0 in base:
                 elif last.exists():
                     log(f"{name}: resume"); YOLO(str(last)).train(resume=True)
                 else:
-                    log(f"{name}: egitim (pretrained={pretrained})")
+                    log(f"{name}: training (pretrained={pretrained})")
                     YOLO(srcw).train(data=str(DATA), epochs=100, imgsz=640, batch=16, device=0, workers=2,
                                      cache="ram", seed=s, deterministic=True, pretrained=pretrained,
                                      project=str(SR / "train"), name=name, exist_ok=True, plots=False,
@@ -87,11 +87,11 @@ for j0 in base:
                     res[split] = metrics_of(r)
                 mf.write_text(json.dumps(res, indent=2))
                 if last.exists():
-                    last.unlink()  # disk tasarrufu; best.pt korunur
-                log(f"{name}: TAMAM val={res['val']['mAP50-95']:.4f} test={res['test']['mAP50-95']:.4f}")
+                    last.unlink()  # save disk space; best.pt is kept
+                log(f"{name}: DONE val={res['val']['mAP50-95']:.4f} test={res['test']['mAP50-95']:.4f}")
                 break
             except Exception as e:
-                log(f"{name}: HATA (deneme {attempt + 1}) {e}")
+                log(f"{name}: ERROR (attempt {attempt + 1}) {e}")
                 with open(SR / "errors.log", "a") as fh:
                     fh.write(f"\n===== {name} {time.ctime()} =====\n{traceback.format_exc()}")
                 torch.cuda.empty_cache()
@@ -101,4 +101,4 @@ for j0 in base:
                     break
             finally:
                 torch.cuda.empty_cache()
-log("Tum tohumlar bitti.")
+log("All seeds finished.")

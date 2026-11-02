@@ -1,8 +1,8 @@
-# Ultralytics'teki YOLO disi tespit modelleri (RT-DETR-l, RT-DETR-x) icin 3 tohumlu egitim + degerlendirme.
-# YOLO calismalariyla ayni ayarlar: epochs=100, imgsz=640, batch=16, workers=2, cache=ram, deterministic, optimizer=auto.
-# seed 0 -> train/, metrics/, eval_val/, eval_test/, predict_test/ (train_all_yolo.py ile ayni yapi)
-# seed 1,2 -> seeds/train/, metrics_seeds/, seeds/eval_*/ (seeds_all.py ile ayni yapi)
-# Calistirma: nohup python cellyolo/train_rtdetr.py > rtdetr_all.log 2>&1 &   (tekrar calistirinca bitenler atlanir)
+# Training and evaluation of the non-YOLO detectors in Ultralytics (RT-DETR-l, RT-DETR-x) with three seeds.
+# Same settings as the YOLO runs: epochs=100, imgsz=640, batch=16, workers=2, cache=ram, deterministic, optimizer=auto.
+# seed 0   -> train/, metrics/, eval_val/, eval_test/, predict_test/ (same layout as train_all_yolo.py)
+# seed 1,2 -> seeds/train/, metrics_seeds/, seeds/eval_*/ (same layout as seeds_all.py)
+# Run: nohup python benchmark/train_rtdetr.py > rtdetr_all.log 2>&1 &   (finished runs are skipped on a rerun)
 import os, sys, json, time, csv, traceback
 
 os.environ.setdefault("CUDA_VISIBLE_DEVICES", "1")
@@ -43,7 +43,7 @@ def metrics_of(r):
     return d
 
 
-def write_summary():  # train_all_yolo.py'deki ozet ile ayni format
+def write_summary():  # same format as the summary in train_all_yolo.py
     rows = []
     for f in sorted((OUT / "metrics").glob("*.json")):
         j = json.loads(f.read_text())
@@ -66,7 +66,7 @@ for srcw in MODELS:
         base = OUT if main else OUT / "seeds"
         mf = (OUT / "metrics" / f"{m}.json") if main else (OUT / "metrics_seeds" / f"{name}.json")
         if mf.exists():
-            log(f"{name}: zaten tamamlanmis, atlaniyor"); continue
+            log(f"{name}: already finished, skipped"); continue
         run = base / "train" / name
         last = run / "weights" / "last.pt"
         batch = BATCH
@@ -74,11 +74,11 @@ for srcw in MODELS:
             try:
                 t0 = time.time()
                 if (run / "TRAINED").exists():
-                    log(f"{name}: egitim bitmis, sadece degerlendirme")
+                    log(f"{name}: training finished, evaluation only")
                 elif last.exists():
                     log(f"{name}: resume"); RTDETR(str(last)).train(resume=True)
                 else:
-                    log(f"{name}: egitim (pretrained=True, seed={s}, batch={batch})")
+                    log(f"{name}: training (pretrained=True, seed={s}, batch={batch})")
                     RTDETR(srcw).train(data=str(DATA), epochs=EPOCHS, imgsz=IMGSZ, batch=batch, device=0,
                                        workers=2, cache="ram", seed=s, deterministic=True, pretrained=True,
                                        project=str(base / "train"), name=name, exist_ok=True, plots=main,
@@ -105,20 +105,20 @@ for srcw in MODELS:
                 if main:
                     write_summary(); (run / "DONE").touch()
                 elif last.exists():
-                    last.unlink()  # disk tasarrufu; best.pt korunur
-                log(f"{name}: TAMAM val={res['val']['mAP50-95']:.4f} test={res['test']['mAP50-95']:.4f}")
+                    last.unlink()  # save disk space; best.pt is kept
+                log(f"{name}: DONE val={res['val']['mAP50-95']:.4f} test={res['test']['mAP50-95']:.4f}")
                 break
             except Exception as e:
-                log(f"{name}: HATA (deneme {attempt + 1}) {e}")
+                log(f"{name}: ERROR (attempt {attempt + 1}) {e}")
                 with open(OUT / "errors_rtdetr.log", "a") as fh:
                     fh.write(f"\n===== {name} {time.ctime()} =====\n{traceback.format_exc()}")
                 torch.cuda.empty_cache()
                 if "out of memory" in str(e).lower() and not last.exists() and batch > 8:
-                    batch = 8; log(f"{name}: OOM -> batch=8 ile yeniden")
+                    batch = 8; log(f"{name}: OOM -> retry with batch=8")
                 elif "out of memory" in str(e).lower():
                     time.sleep(300)
                 else:
                     break
             finally:
                 torch.cuda.empty_cache()
-log("Tum RT-DETR egitimleri bitti.")
+log("All RT-DETR runs finished.")

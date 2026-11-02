@@ -1,7 +1,7 @@
-veri hazir 2s | train 882 val 252 | dedektor val mAP50-95=0.8655
+data ready 2s | train 882 val 252 | detector val mAP50-95=0.8655
 Downloading: "https://download.pytorch.org/models/mobilenet_v3_large-8738ca79.pth" to /home/workspace/.cache/torch/hub/checkpoints/mobilenet_v3_large-8738ca79.pth
   0%|          | 0.00/21.1M [00:00<?, ?B/s]  5%|▌         | 1.12M/21.1M [00:00<00:01, 11.4MB/s] 24%|██▍       | 5.12M/21.1M [00:00<00:00, 27.6MB/s] 90%|████████▉ | 19.0M/21.1M [00:00<00:00, 79.3MB/s]100%|██████████| 21.1M/21.1M [00:00<00:00, 70.1MB/s]
-model parametre: 4.44M | adim 4440
+model parameters: 4.44M | steps 4440
 ep 1/40 loss 2.7167 dfl 1.9645 l1 0.04859 iou 0.5093 | 437s
 ep 2/40 loss 1.7911 dfl 1.1991 l1 0.02881 iou 0.4480 | 765s
 ep 3/40 loss 1.4822 dfl 0.9532 l1 0.01704 iou 0.4437 | 1039s

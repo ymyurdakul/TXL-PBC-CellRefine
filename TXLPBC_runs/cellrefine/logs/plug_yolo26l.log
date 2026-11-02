@@ -4,7 +4,7 @@ val iters=1 beta=0.0 lam=1.0: 0.8699
 val iters=2 beta=0.0 lam=0.5: 0.8707
 val iters=2 beta=0.0 lam=0.75: 0.8702
 val iters=2 beta=0.0 lam=1.0: 0.8683
-SECIM i2_b0.0_l0.5 | val 0.8654 -> 0.8707 | test 0.8715 -> 0.8773 (yalniz puan 0.8715, yalniz incelt 0.8773)
+SELECTED i2_b0.0_l0.5 | val 0.8654 -> 0.8707 | test 0.8715 -> 0.8773 (rescoring only 0.8715, refinement only 0.8773)
   WBC: 0.8812 -> 0.8859
   RBC: 0.9125 -> 0.9156
   Platelets: 0.8209 -> 0.8303

@@ -1,4 +1,4 @@
-"""Basari tavani analizi: (a) yeniden puanlama kahini, (b) konumlama kahini. Tahminleri onbellege yazar."""
+"""Upper-bound analysis: (a) rescoring oracle, (b) localization oracle. Caches the detector predictions."""
 import pickle
 import sys
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         P = cached_preds(det, split)
         G = gt_dict(P)
         n = sum(len(v["box"]) for v in P.values())
-        print(f"{det} {split}: {len(P)} goruntu, {n} tahmin")
+        print(f"{det} {split}: {len(P)} images, {n} predictions")
         for mode in ("none", "score", "score_mix", "loc"):
             r = evaluate(oracle(P, G, mode) if mode != "none" else P, G)
             print(f"  {mode:10s} " + " ".join(f"{k}={v:.4f}" for k, v in r.items()), flush=True)

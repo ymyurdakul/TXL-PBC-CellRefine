@@ -1,8 +1,8 @@
-# TXL-PBC uzerinde Ultralytics YOLO modellerinin toplu egitimi ve degerlendirilmesi
-# Calistirma: nohup python train_all_yolo.py > train_all.log 2>&1 &
-# Yarida kalirsa ayni komutla tekrar calistirilir; biten modeller atlanir, yarim kalan resume edilir.
+# Trains and evaluates the Ultralytics YOLO models on TXL-PBC (seed 0).
+# Run: nohup python benchmark/train_all_yolo.py > train_all.log 2>&1 &
+# If interrupted, run the same command again: finished models are skipped and an unfinished run is resumed.
 import os, sys, json, time, csv, traceback, platform
-os.environ.setdefault("CUDA_VISIBLE_DEVICES", "1")   # GPU0 baska bir islem tarafindan kullaniliyor
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "1")   # GPU 0 was used by another job
 from pathlib import Path
 import torch, ultralytics
 from ultralytics import YOLO
@@ -15,7 +15,7 @@ BATCH = int(os.environ.get("BATCH", 16))
 SEED = 0
 NAMES = ["WBC", "RBC", "Platelets"]
 
-# Kucukten buyuge; YOLOv6 icin resmi on-egitimli agirlik yok -> sifirdan (en sona)
+# From small to large; YOLOv6 has no official pretrained weights, so it is trained from scratch (last)
 MODELS = (
     ["yolov5nu.pt", "yolov8n.pt", "yolov9t.pt", "yolov10n.pt", "yolo11n.pt", "yolo12n.pt", "yolo26n.pt", "yolov3-tinyu.pt"]
   + ["yolov5su.pt", "yolov8s.pt", "yolov9s.pt", "yolov10s.pt", "yolo11s.pt", "yolo12s.pt", "yolo26s.pt"]
@@ -75,18 +75,18 @@ for m in MODELS:
     name = Path(m).stem
     run = OUT / "train" / name
     if (run / "DONE").exists():
-        log(f"{name}: zaten tamamlanmis, atlaniyor"); continue
+        log(f"{name}: already finished, skipped"); continue
     pretrained = m.endswith(".pt")
     try:
         t0 = time.time()
         last = run / "weights" / "last.pt"
         if (run / "TRAINED").exists():
-            log(f"{name}: egitim bitmis, sadece degerlendirme")
+            log(f"{name}: training finished, evaluation only")
         elif last.exists():
-            log(f"{name}: yarim kalan egitim resume ediliyor")
+            log(f"{name}: resuming unfinished training")
             YOLO(str(last)).train(resume=True)
         else:
-            log(f"{name}: egitim basliyor (pretrained={pretrained})")
+            log(f"{name}: training (pretrained={pretrained})")
             YOLO(m).train(data=str(DATA), epochs=EPOCHS, imgsz=IMGSZ, batch=BATCH, device=0,
                           workers=2, cache="ram", seed=SEED, deterministic=True, pretrained=pretrained,
                           project=str(OUT / "train"), name=name, exist_ok=True,
@@ -116,9 +116,9 @@ for m in MODELS:
         (OUT / "metrics" / f"{name}.json").write_text(json.dumps(res, indent=2))
         write_summary()
         (run / "DONE").touch()
-        log(f"{name}: TAMAM  test mAP50={res['test']['mAP50']:.4f}  mAP50-95={res['test']['mAP50-95']:.4f}")
+        log(f"{name}: DONE  test mAP50={res['test']['mAP50']:.4f}  mAP50-95={res['test']['mAP50-95']:.4f}")
     except Exception:
-        log(f"{name}: HATA")
+        log(f"{name}: ERROR")
         traceback.print_exc()
         with open(OUT / "errors.log", "a") as fh:
             fh.write(f"\n===== {name} {time.ctime()} =====\n{traceback.format_exc()}")
@@ -126,4 +126,4 @@ for m in MODELS:
         torch.cuda.empty_cache()
 
 write_summary()
-log("Tum modeller bitti.")
+log("All models finished.")

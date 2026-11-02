@@ -1,5 +1,5 @@
-veri hazir 2s | train 882 val 252 | dedektor val mAP50-95=0.8655
-model parametre: 4.17M | adim 4440
+data ready 2s | train 882 val 252 | detector val mAP50-95=0.8655
+model parameters: 4.17M | steps 4440
 ep 1/40 loss 2.7108 dfl 1.9600 l1 0.04832 iou 0.5092 | 29s
 ep 2/40 loss 1.6630 dfl 1.0931 l1 0.02478 iou 0.4460 | 53s
 ep 3/40 loss 1.4577 dfl 0.9300 l1 0.01671 iou 0.4441 | 78s
@@ -40,4 +40,4 @@ ep 37/40 loss 1.2282 dfl 0.7495 l1 0.00960 iou 0.4307 | 881s
 ep 38/40 loss 1.2310 dfl 0.7510 l1 0.00969 iou 0.4316 | 893s
 ep 39/40 loss 1.2272 dfl 0.7496 l1 0.00959 iou 0.4297 | 905s
 ep 40/40 loss 1.2260 dfl 0.7475 l1 0.00951 iou 0.4309 | 917s | val i0_b0.5=0.8613 i1_b0.0=0.8655 i1_b0.5=0.8613
-bitti: en iyi val 0.8657 (dedektor 0.8655)
+done: best val 0.8657 (detector 0.8655)

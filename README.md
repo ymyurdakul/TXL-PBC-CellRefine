@@ -33,6 +33,7 @@ The study has two parts:
 ## Repository layout
 
 ```
+download_weights.py        downloads the three refiner weights from release v1.0
 benchmark/                 training of the 45 detectors (seed 0, seeds 1-2, RT-DETR)
 cellrefine/                CellRefine: model, training, evaluation, oracle, box voting, run scripts
 analysis/                  metric re-implementation (evalcore.py), reproduction, per-detection and activation-map analyses
@@ -45,17 +46,27 @@ TXLPBC_runs/               raw outputs in the original layout used by the code:
   metrics/, metrics_seeds/   validation and test metrics of every run (JSON)
   eval_test/, eval_val/      evaluation outputs
   cellrefine/metrics/        CellRefine evaluation results (validation grid, chosen settings, test metrics)
-  cellrefine/runs/           refiner training histories; r18_s{0,1,2}/best.pt are the released refiner weights
+  cellrefine/runs/           refiner settings and training histories (args.json, hist.json); the weights are downloaded
+                             into r18_s{0,1,2}/best.pt (see Weights)
   cellrefine/preds/          cached detector predictions (train, val, test) used to train and evaluate the refiners
 ```
 
 ## Weights
 
-| File | Detector | Seed | Test mAP50–95 with refinement |
-|---|---|---|---|
-| `TXLPBC_runs/cellrefine/runs/r18_s0/best.pt` | YOLO26-m run 0 | 0 | 88.68 |
-| `TXLPBC_runs/cellrefine/runs/r18_s1/best.pt` | YOLO26-m run 1 | 1 | 88.02 |
-| `TXLPBC_runs/cellrefine/runs/r18_s2/best.pt` | YOLO26-m run 2 | 2 | 88.25 |
+The refiner weights are not stored in the git tree. Download them from the links below (release
+[v1.0](https://github.com/ymyurdakul/TXL-PBC-CellRefine/releases/tag/v1.0)).
+
+| Refiner | Detector | Test mAP50–95 with refinement | Download | Place at |
+|---|---|---|---|---|
+| CellRefine, run 0 | YOLO26-m run 0 | 88.68 | [Download from link](https://github.com/ymyurdakul/TXL-PBC-CellRefine/releases/download/v1.0/cellrefine_r18_s0.pt) | `TXLPBC_runs/cellrefine/runs/r18_s0/best.pt` |
+| CellRefine, run 1 | YOLO26-m run 1 | 88.02 | [Download from link](https://github.com/ymyurdakul/TXL-PBC-CellRefine/releases/download/v1.0/cellrefine_r18_s1.pt) | `TXLPBC_runs/cellrefine/runs/r18_s1/best.pt` |
+| CellRefine, run 2 | YOLO26-m run 2 | 88.25 | [Download from link](https://github.com/ymyurdakul/TXL-PBC-CellRefine/releases/download/v1.0/cellrefine_r18_s2.pt) | `TXLPBC_runs/cellrefine/runs/r18_s2/best.pt` |
+
+All three files can also be downloaded and placed in one step, with their checksums verified:
+
+```bash
+python download_weights.py
+```
 
 - **Format:** each file holds the refiner state dict (`model`), the training arguments (`args`), the selected epoch, and the
   validation scores (float32, about 48 MB).
@@ -76,7 +87,7 @@ repository root as their base directory; set `TXLPBC_ROOT` to use another locati
 
 ## Reproducing the results
 
-Run all commands from the repository root.
+Run all commands from the repository root. Download the weights first (see Weights).
 
 ```bash
 # CellRefine on YOLO26-m from the cached predictions and the released weights (CPU or GPU, about 1 min per run on CPU)
@@ -110,7 +121,6 @@ output is written to `figures/output`.
 
 - **Metrics:** `analysis/evalcore.py` re-implements the detection metrics of Ultralytics 8.4.191 (greedy matching over IoU
   0.50:0.95, 101-point AP) and reproduces its mAP50–95 values.
-- **Language:** comments in the original research scripts are partly in Turkish.
 - **Excluded experiments:** experiments that modified the detector itself are not part of the manuscript and are not included.
 
 ## Citation

@@ -1,7 +1,8 @@
-"""Tek modelin one2many basligi ile kutu oylamasi (box voting) denemesi.
-mod e2e : YOLO26 varsayilan (one2one, NMS'siz)
-mod o2m : one2many + NMS
-mod vote: one2many + NMS + oylama (tutulan kutu, ayni sinif ve IoU>vt adaylarin skor^p agirlikli ortalamasi)
+"""Box voting with the one-to-many head of a single model.
+mode e2e : YOLO26 default (one-to-one, NMS-free)
+mode o2m : one-to-many + NMS
+mode vote: one-to-many + NMS + voting (each kept box becomes the score^p weighted mean of candidates of the same
+           class with IoU > vt)
 """
 import argparse
 import sys

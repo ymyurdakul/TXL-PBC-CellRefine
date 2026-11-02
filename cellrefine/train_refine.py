@@ -1,4 +1,4 @@
-"""CellRefine egitimi. Ornek:
+"""CellRefine training. Example:
 CUDA_VISIBLE_DEVICES=1 python cellrefine/train_refine.py --det yolo26m_s0 --name r18_s0 --seed 0
 """
 import argparse
@@ -27,16 +27,16 @@ ap.add_argument("--ctx", type=float, default=1.6)
 ap.add_argument("--bins", type=int, default=16)
 ap.add_argument("--rng", type=float, default=0.5)
 ap.add_argument("--epochs", type=int, default=40)
-ap.add_argument("--ipb", type=int, default=8, help="adim basina goruntu")
-ap.add_argument("--k", type=int, default=6, help="GT basina titretilmis oneri")
-ap.add_argument("--smax", type=float, default=0.15, help="titretme std ust siniri (kutu boyutuna gore)")
+ap.add_argument("--ipb", type=int, default=8, help="images per step")
+ap.add_argument("--k", type=int, default=6, help="jittered proposals per ground truth box")
+ap.add_argument("--smax", type=float, default=0.15, help="upper bound of the jitter SD (relative to box size)")
 ap.add_argument("--lr", type=float, default=5e-4)
 ap.add_argument("--wd", type=float, default=1e-4)
 ap.add_argument("--w_l1", type=float, default=5.0)
 ap.add_argument("--w_iou", type=float, default=1.0)
 ap.add_argument("--eval_every", type=int, default=4)
-ap.add_argument("--geo", type=int, default=1, help="1: transpoz+cevirme artirimi, 0: yok")
-ap.add_argument("--teacher", default="", help="damitma icin ogretmen refiner run adi (bos: yok)")
+ap.add_argument("--geo", type=int, default=1, help="1: transpose and flip augmentation, 0: none")
+ap.add_argument("--teacher", default="", help="run name of the teacher refiner for distillation (empty: none)")
 ap.add_argument("--w_kd", type=float, default=1.0)
 ap.add_argument("--kd_T", type=float, default=2.0)
 a = ap.parse_args()
@@ -65,7 +65,7 @@ va_im, va_gt = load_split("val")
 tr_det = cached_preds(a.det, "train")
 va_det = cached_preds(a.det, "val")
 base_val = evaluate(va_det, va_gt)
-print(f"veri hazir {time.time() - t0:.0f}s | train {len(tr_im)} val {len(va_im)} | dedektor val mAP50-95="
+print(f"data ready {time.time() - t0:.0f}s | train {len(tr_im)} val {len(va_im)} | detector val mAP50-95="
       f"{base_val['mAP50-95']:.4f}", flush=True)
 
 keys = list(tr_im)
@@ -74,7 +74,7 @@ mean, std = MEAN.to(dev)[0], STD.to(dev)[0]
 
 
 def aug_image(k):
-    """D4 (transpoz + cevirmeler) ve renk oynatma; GT ve dedektor kutulari ayni donusumle."""
+    """D4 (transpose + flips) and color jitter; ground truth and detector boxes get the same transform."""
     img = gpu_im[k].float() / 255.0
     gb, gc = tr_gt[k]
     gb = torch.from_numpy(gb).to(dev)
@@ -84,7 +84,7 @@ def aug_image(k):
     dc = torch.from_numpy(d["cls"]).to(dev)
     boxes = [gb, db]
     g_on = a.geo == 1
-    if g_on and random.random() < 0.5:  # transpoz
+    if g_on and random.random() < 0.5:  # transpose
         img = img.transpose(1, 2)
         boxes = [b[:, [1, 0, 3, 2]] for b in boxes]
     H, W = img.shape[1:]
@@ -94,7 +94,7 @@ def aug_image(k):
     if g_on and random.random() < 0.5:
         img = img.flip(1)
         boxes = [torch.stack([b[:, 0], H - b[:, 3], b[:, 2], H - b[:, 1]], 1) for b in boxes]
-    # renk
+    # color
     img = img * random.uniform(0.8, 1.2)
     m = img.mean()
     img = (img - m) * random.uniform(0.8, 1.2) + m
@@ -106,7 +106,7 @@ def aug_image(k):
 
 
 def proposals(gb, gc, db, dc):
-    """Titretilmis GT onerileri + dedektor tahminleri. Donus: kutu, sinif, hedef kutu, pozitif maske."""
+    """Jittered ground truth proposals + detector predictions. Returns: box, class, target box, positive mask."""
     n = len(gb)
     P, C, T, M = [], [], [], []
     if n:
@@ -128,7 +128,7 @@ def proposals(gb, gc, db, dc):
             best = torch.zeros(len(db), device=dev)
             j = torch.zeros(len(db), dtype=torch.long, device=dev)
         pos = best >= 0.3
-        keep = pos | (torch.rand(len(db), device=dev) < 0.3)  # negatiflerin bir kismi
+        keep = pos | (torch.rand(len(db), device=dev) < 0.3)  # keep part of the negatives
         P.append(db[keep])
         C.append(dc[keep])
         T.append(gb[j[keep]] if n else db[keep])
@@ -157,7 +157,7 @@ if a.teacher:
     teacher = teacher.to(dev).eval()
     for _p in teacher.parameters():
         _p.requires_grad_(False)
-    print(f"ogretmen: {a.teacher} ({_ar['backbone']})", flush=True)
+    print(f"teacher: {a.teacher} ({_ar['backbone']})", flush=True)
 opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd)
 steps_ep = math.ceil(len(keys) / a.ipb)
 total = steps_ep * a.epochs
@@ -165,7 +165,7 @@ warm = min(300, total // 10)
 sched = torch.optim.lr_scheduler.LambdaLR(
     opt, lambda s: (s + 1) / warm if s < warm else 0.5 * (1 + math.cos(math.pi * (s - warm) / max(1, total - warm))))
 scaler = torch.amp.GradScaler()
-print(f"model parametre: {sum(p.numel() for p in model.parameters()) / 1e6:.2f}M | adim {total}", flush=True)
+print(f"model parameters: {sum(p.numel() for p in model.parameters()) / 1e6:.2f}M | steps {total}", flush=True)
 
 best, hist = -1, []
 for ep in range(a.epochs):
@@ -196,7 +196,7 @@ for ep in range(a.epochs):
         l_l1 = F.smooth_l1_loss(delta[MS], TD[MS].clamp(-a.rng, a.rng), beta=0.02)
         l_iou = F.binary_cross_entropy_with_logits(iol, TI)
         loss = l_dfl + a.w_l1 * l_l1 + a.w_iou * l_iou
-        if teacher is not None:  # bilgi damitma: buyuk refiner'in kenar dagilimi ve IoU tahmini
+        if teacher is not None:  # knowledge distillation: edge distributions and IoU prediction of the larger refiner
             with torch.no_grad(), torch.autocast("cuda", dtype=torch.float16):
                 _, t_lg, t_io = teacher(X, CL, WH)
             T = a.kd_T
@@ -229,4 +229,4 @@ for ep in range(a.epochs):
     print(line, flush=True)
 torch.save({"model": model.state_dict(), "args": vars(a), "ep": a.epochs}, RUN / "last.pt")
 (RUN / "hist.json").write_text(json.dumps({"base_val": base_val, "hist": hist}, indent=2))
-print(f"bitti: en iyi val {best:.4f} (dedektor {base_val['mAP50-95']:.4f})", flush=True)
+print(f"done: best val {best:.4f} (detector {base_val['mAP50-95']:.4f})", flush=True)
